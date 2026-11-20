@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "locaglint": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "-p",
+        "@glintapex/loca-mcp@0.0.0",
+        "locaglint-mcp"
+      ],
+      "env": {
+        "LOCAGLINT_API_BASE": "${LOCAGLINT_API_BASE:-https://loca.glintapex.com}",
+        "LOCAGLINT_TOKEN": "${LOCAGLINT_TOKEN}",
+        "LOCAGLINT_PROJECT_ID": "${LOCAGLINT_PROJECT_ID:-}"
+      }
+    }
+  }
+}

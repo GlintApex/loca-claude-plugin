@@ -1,0 +1,31 @@
+{
+  "name": "glintapex",
+  "owner": {
+    "name": "GlintApex",
+    "email": "support@glintapex.com"
+  },
+  "metadata": {
+    "description": "Claude Code plugins by GlintApex."
+  },
+  "plugins": [
+    {
+      "name": "loca",
+      "source": "./plugins/loca",
+      "description": "LocaGlint game localization: sync strings, translate in your own Claude Code session with placeholder and glossary checks, and render approved translations back to your game files.",
+      "version": "0.0.0",
+      "author": {
+        "name": "GlintApex"
+      },
+      "homepage": "https://docs.glintapex.com/loca",
+      "repository": "https://github.com/GlintApex/loca-claude-plugin",
+      "license": "MIT",
+      "keywords": [
+        "localization",
+        "i18n",
+        "game",
+        "mcp"
+      ],
+      "category": "development"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+name: Validate
+
+# Public repository: hosted runners only (free for public repos; never run fork PRs on self-hosted).
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Manifests and skills
+        run: node scripts/validate.mjs
+
+      - name: Claude Code plugin validator
+        run: |
+          npm install -g @anthropic-ai/claude-code >/dev/null
+          claude plugin validate .
+          claude plugin validate plugins/loca
+
+      - name: Denied-term scan
+        env:
+          LEAK_DENYLIST: ${{ secrets.LEAK_DENYLIST }}
+        run: node scripts/check-leak.mjs

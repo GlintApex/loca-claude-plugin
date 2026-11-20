@@ -1,0 +1,20 @@
+{
+  "name": "loca",
+  "version": "0.0.0",
+  "description": "LocaGlint game localization: sync strings, translate in your own Claude Code session with placeholder and glossary checks, and render approved translations back to your game files.",
+  "author": {
+    "name": "GlintApex",
+    "email": "support@glintapex.com"
+  },
+  "homepage": "https://docs.glintapex.com/loca",
+  "repository": "https://github.com/GlintApex/loca-claude-plugin",
+  "license": "MIT",
+  "keywords": [
+    "localization",
+    "i18n",
+    "game",
+    "mcp",
+    "unity",
+    "godot"
+  ]
+}
