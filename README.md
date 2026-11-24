@@ -53,8 +53,28 @@ npx -y -p @glintapex/loca-mcp locaglint-mcp init --no-skills --no-mcp
 
 ## Without the plugin
 
-Any MCP client can run the server directly; see the
-[`@glintapex/loca-mcp` package](https://www.npmjs.com/package/@glintapex/loca-mcp).
+Any MCP client that supports stdio servers (Cursor, Codex, Windsurf, Cline, …) can run the server directly:
+
+```json
+{
+  "mcpServers": {
+    "locaglint": {
+      "command": "npx",
+      "args": ["-y", "-p", "@glintapex/loca-mcp", "locaglint-mcp"],
+      "env": { "LOCAGLINT_API_BASE": "https://loca.glintapex.com", "LOCAGLINT_TOKEN": "<your token>" }
+    }
+  }
+}
+```
+
+See the [`@glintapex/loca-mcp` package](https://www.npmjs.com/package/@glintapex/loca-mcp) for all options.
+
+## Smoke test
+
+```bash
+scripts/plugin-smoke.sh                       # install into a throwaway Claude Code config: 7 skills, 1 MCP server
+LOCAGLINT_TOKEN=... node scripts/mcp-smoke.mjs  # start the pinned MCP server: 16 tools, then list your projects
+```
 
 ## Versioning
 

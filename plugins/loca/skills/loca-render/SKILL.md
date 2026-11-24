@@ -39,6 +39,9 @@ files — **you don't pass `--dir`, `--out`, `--source-lang`, or approval flags.
    file, and the language still renders** (no more all-or-nothing skip when one key
    is missing). Only a language with **zero** translated keys is skipped (no empty
    file written). Partially rendered languages report how many keys were omitted.
+   Profiles whose format requires every language file to carry the same keys write an empty
+   string `""` for an untranslated key instead of omitting it; `sync` skips empty strings, so
+   re-syncing the rendered files never writes them back as translations.
 5. Writes one file per rendered language and prints a summary.
 
 Options (all optional):
@@ -82,10 +85,12 @@ This low-level CLI does format conversion only — no network, no database, no A
 
 ## File format (profile)
 
-The file format of your game's localization files is handled by a **profile** module, configured once
-per project: `"profileModule"` in `.locaglint.json`, the `LOCAGLINT_PROFILE_MODULE` env var, or
-`--profile-module <module>` on the command line. If a `locaglint-profile` / `locaglint-mcp sync|render`
-command reports that no profile is configured, ask the user which profile module the project uses.
+The file format of your game's localization files is handled by a **profile**, configured once per
+project: `"profileModule"` in `.locaglint.json`, the `LOCAGLINT_PROFILE_MODULE` env var, or
+`--profile-module <name>` on the command line. Built-in formats: `json-flat`, `json-nested`, `next-intl`,
+`csv`, `unity-csv`, `i2-csv`, `godot-csv`, `gridly-csv`; a project-specific format can instead be an npm
+package or local module that exports a profile. If a `locaglint-profile` / `locaglint-mcp sync|render`
+command reports that no profile is configured, ask the user which format the project uses.
 
 ## Boundaries
 

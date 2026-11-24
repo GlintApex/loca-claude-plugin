@@ -1,0 +1,32 @@
+# Smithery configuration (stdio, launched with npx). Copy to the repository root at submission time.
+# Format per https://smithery.ai/docs/config/smithery.yaml — re-check the page on the day of submission.
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    required:
+      - token
+    properties:
+      token:
+        type: string
+        description: LocaGlint personal access token (API Token page in the web app).
+      apiBase:
+        type: string
+        default: https://loca.glintapex.com
+        description: LocaGlint API base URL.
+      projectId:
+        type: string
+        description: Optional default project ID.
+  commandFunction: |-
+    (config) => ({
+      command: 'npx',
+      args: ['-y', '-p', '@glintapex/loca-mcp@VERSION', 'locaglint-mcp'],
+      env: {
+        LOCAGLINT_TOKEN: config.token,
+        LOCAGLINT_API_BASE: config.apiBase || 'https://loca.glintapex.com',
+        ...(config.projectId ? { LOCAGLINT_PROJECT_ID: config.projectId } : {})
+      }
+    })
+  exampleConfig:
+    token: lg_pat_example
+    apiBase: https://loca.glintapex.com

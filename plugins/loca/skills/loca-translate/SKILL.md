@@ -40,6 +40,15 @@ translation needs review before it can be exported depends on the project's
    - **Preserve every placeholder verbatim**, including bare `{0}`, `{1}`, … and
      reference-style `{0:>Item_Name}` tokens. Dropping or reformatting
      a placeholder index causes a hard-reject on write.
+   - **Named placeholders** such as `{name}` or `{user.first_name}` are checked too (project setting
+     `placeholderStyle: auto`, the default): keep exactly the same set as the source — a missing one is
+     rejected with `placeholder_missing`, an invented one with `placeholder_extra`. Braces with spaces or
+     quotes (JSON like `{ "a": 1 }`) are not placeholders, and ICU-quoted `'{name}'` is literal text.
+   - **ICU MessageFormat** (`{count, plural, one {# item} other {# items}}`, `select`,
+     `selectordinal`): keep every argument name (`{count}`) and the `#`, always keep an
+     `other` branch, use the **target language's** plural keywords (ja/zh/ko: only `other`;
+     ru/uk/pl: `one`/`few`/`many`/`other`; `=0`-style exact matches are always allowed), and keep
+     `select` keys unchanged. Violations are rejected with `icu_invalid` / `icu_argument_missing`.
    - **Inject consistent proper-noun translations** from the glossary (step 2) —
      do not invent ad-hoc renderings for known terms.
    - **Keep reserved / do-not-translate words verbatim and untranslated** — copy

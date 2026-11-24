@@ -1,11 +1,11 @@
 ---
 name: loca-feedback
-description: Report a problem, confusion, or idea about LocaGlint (the platform, the MCP tools, or the loca-* skills) back to the platform maintainers. Use this whenever you hit a bug, a wrong/confusing behavior, a missing capability, or think of an improvement while doing localization work — the maintainers triage these and ship fixes.
+description: Report a problem, confusion, or idea about LocaGlint (the platform, the MCP tools, or the loca-* skills) to the GlintApex support team. Use this whenever you hit a bug, a wrong/confusing behavior, a missing capability, or think of an improvement while doing localization work — support triages it and replies by email.
 ---
 
 # loca-feedback
 
-Send feedback about LocaGlint itself back to the people who maintain the platform. This closes the loop: when something in the tooling gets in your way, don't just work around it silently — file it, so it can be fixed for everyone.
+Send feedback about LocaGlint itself to the GlintApex support team. This closes the loop: when something in the tooling gets in your way, don't just work around it silently — file it, so it can be fixed for everyone.
 
 ## When to use
 
@@ -25,15 +25,16 @@ Don't file feedback about the game content or translations themselves — this c
    - `idea` — a suggestion / feature request / improvement.
    - `question` — you're unsure how something is meant to work (default if unclear).
 3. Optionally attach a `context` object to help triage — e.g. `{ key, lang, skill, tool }` for whatever you were doing when it came up.
-4. Call `loca_submit_feedback({ content, kind, context })`. It returns `{ id, status }` (`status` starts as `open`).
-5. Tell the user it was submitted, and that the maintainers will triage it (visible in the project's **Feedback** page in the Web UI).
+4. **Privacy notice before submitting**: tell the user "the feedback content (including any context you attach, which may contain game text) will be sent to the GlintApex support team", and only submit once they agree. Attach only the minimum context needed to reproduce.
+5. Call `loca_submit_feedback({ content, kind, context })`. It returns `{ id, ref, status, message }`.
+6. Tell the user it was submitted, give them the reference `ref`, and say support will reply by email.
 
 ## Output
 
-Confirm submission with the returned `id`, and echo back the one-line summary you sent, so the user knows exactly what was reported.
+Confirm submission with the returned reference `ref`, and echo back the one-line summary you sent, so the user knows exactly what was reported.
 
 ## Boundaries
 
-- This only **submits** feedback (`loca_submit_feedback`). Reading / triaging feedback happens in the Web UI (the project's Feedback page), not through a skill.
+- This only **submits** feedback (`loca_submit_feedback`). Feedback is not shown inside the customer project; GlintApex support handles it and replies by email.
 - Prefer asking the user before submitting, unless they've already told you to file it. Keep one issue per submission — don't batch unrelated problems into one.
-- Feedback is scoped to the current project (the maintainers see which project it came from); no need to include secrets or tokens.
+- Feedback records the org and project it came from (support can see where it came from); never include secrets or tokens.

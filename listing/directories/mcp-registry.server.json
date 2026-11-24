@@ -1,0 +1,44 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.glintapex/loca",
+  "title": "LocaGlint",
+  "description": "Game localization from your AI agent: sync strings, validated writes, review, render to game files.",
+  "websiteUrl": "https://glintapex.com/loca",
+  "repository": {
+    "url": "https://github.com/GlintApex/loca-claude-plugin",
+    "source": "github"
+  },
+  "version": "0.0.0",
+  "packages": [
+    {
+      "registryType": "npm",
+      "registryBaseUrl": "https://registry.npmjs.org",
+      "identifier": "@glintapex/loca-mcp",
+      "version": "0.0.0",
+      "runtimeHint": "npx",
+      "transport": { "type": "stdio" },
+      "environmentVariables": [
+        {
+          "name": "LOCAGLINT_TOKEN",
+          "description": "Personal access token from the LocaGlint web app (API Token page).",
+          "isRequired": true,
+          "isSecret": true,
+          "format": "string"
+        },
+        {
+          "name": "LOCAGLINT_API_BASE",
+          "description": "LocaGlint API base URL.",
+          "isRequired": false,
+          "default": "https://loca.glintapex.com",
+          "format": "string"
+        },
+        {
+          "name": "LOCAGLINT_PROJECT_ID",
+          "description": "Default project ID; every tool also accepts projectId.",
+          "isRequired": false,
+          "format": "string"
+        }
+      ]
+    }
+  ]
+}

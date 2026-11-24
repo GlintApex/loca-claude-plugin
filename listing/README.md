@@ -1,4 +1,5 @@
 # Directory listing materials
 
-Placeholder. Icons, descriptions, screenshots and the submission tracker (`SUBMISSIONS.md`) are
-added before the public beta. Nothing in this folder has been submitted anywhere yet.
+Ready-to-submit materials for MCP / plugin directories. **Nothing in this folder has been submitted.**
+Start with `SUBMISSIONS.md`; shared copy in `copy.md`; images in `assets/` (see `SCREENSHOTS.md`);
+one file per directory in `directories/`.

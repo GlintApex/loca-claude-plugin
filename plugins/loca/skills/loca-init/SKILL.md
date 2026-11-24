@@ -41,10 +41,12 @@ the API through the CLI — format conversion and data writes stay separate.
 
 ## File format (profile)
 
-The file format of your game's localization files is handled by a **profile** module, configured once
-per project: `"profileModule"` in `.locaglint.json`, the `LOCAGLINT_PROFILE_MODULE` env var, or
-`--profile-module <module>` on the command line. If a `locaglint-profile` / `locaglint-mcp sync|render`
-command reports that no profile is configured, ask the user which profile module the project uses.
+The file format of your game's localization files is handled by a **profile**, configured once per
+project: `"profileModule"` in `.locaglint.json`, the `LOCAGLINT_PROFILE_MODULE` env var, or
+`--profile-module <name>` on the command line. Built-in formats: `json-flat`, `json-nested`, `next-intl`,
+`csv`, `unity-csv`, `i2-csv`, `godot-csv`, `gridly-csv`; a project-specific format can instead be an npm
+package or local module that exports a profile. If a `locaglint-profile` / `locaglint-mcp sync|render`
+command reports that no profile is configured, ask the user which format the project uses.
 
 ## Output
 - Number of keys created vs. updated, and a short diff of what changed.
