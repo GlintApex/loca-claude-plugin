@@ -20,7 +20,7 @@ platform `GlossaryEntry`:
 
 | Field            | Type                    | Notes                                              |
 |------------------|-------------------------|----------------------------------------------------|
-| `term`           | `string`                | The source term (e.g. `"MergeBucks"`)              |
+| `term`           | `string`                | The source term (e.g. `"StarCoins"`)              |
 | `type`           | `string` (recommended `"proper"` \| `"term"`, default `"term"`) | Reference note / category only — **no enforcement**. Via MCP only `"proper"` or `"term"` are accepted. |
 | `doNotTranslate` | `boolean`               | **The only enforced signal**: `true` = the term must be kept verbatim (hard-validated on write) |
 | `translations`   | `Record<string,string>` | (optional) preferred per-language translations for the term |
@@ -30,8 +30,8 @@ platform `GlossaryEntry`:
 Example JSON:
 ```json
 [
-  { "term": "MergeBucks", "type": "proper", "doNotTranslate": false,
-    "translations": { "zh-CN": "合并币", "ja-JP": "マージバックス" } },
+  { "term": "StarCoins", "type": "proper", "doNotTranslate": false,
+    "translations": { "zh-CN": "星币", "ja-JP": "スターコイン" } },
   { "term": "BETA", "type": "term", "doNotTranslate": true }
 ]
 ```
